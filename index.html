@@ -166,8 +166,8 @@
             pos[3] = vec2(-cos(time*0.2)*0.7, sin(time*0.4)*0.3);
             pos[4] = vec2(sin(time*0.7)*0.5, cos(time*0.5)*0.5);
             pos[5] = vec2(-cos(time*0.3)*0.4, -sin(time*0.7)*0.6);
-            pos[6] = vec2(cos(time*0.5)*0.5, sin(time*0.4)*0.4); // Nova posição
-            pos[7] = vec2(-sin(time*0.6)*0.5, cos(time*0.3)*0.5); // Nova posição
+            pos[6] = vec2(cos(time*0.5)*0.5, sin(time*0.4)*0.4); 
+            pos[7] = vec2(-sin(time*0.6)*0.5, cos(time*0.3)*0.5);
             
             float d[8];
             d[0] = smoothstep(0.02, 0.0, fractal1(uv-pos[0]));
@@ -176,8 +176,8 @@
             d[3] = smoothstep(0.02, 0.0, fractal4(uv-pos[3]));
             d[4] = smoothstep(0.02, 0.0, fractal5(uv-pos[4]));
             d[5] = smoothstep(0.02, 0.0, fractal6(uv-pos[5]));
-            d[6] = smoothstep(0.02, 0.0, fractal7(uv-pos[6])); // Novo fractal
-            d[7] = smoothstep(0.02, 0.0, fractal8(uv-pos[7])); // Novo fractal
+            d[6] = smoothstep(0.02, 0.0, fractal7(uv-pos[6]));
+            d[7] = smoothstep(0.02, 0.0, fractal8(uv-pos[7])); 
             
             vec3 col = vec3(0.0);
             col += d[0] * vec3(0.8,0.3,0.4); // Vermelho
