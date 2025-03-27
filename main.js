@@ -2,6 +2,7 @@ var mesh, timer, shaderProgram;
 var canvas, gl;
 var animationFrameId;
 
+//Estrutura básica com tratamento de erros
 var start = function() {
     console.log("Iniciando aplicação...");
     if (!initCanvas()) {
@@ -54,6 +55,7 @@ var initCanvas = function() {
     }
 };
 
+//Loop de renderização
 function drawScene() {
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -71,13 +73,13 @@ function drawScene() {
     }
 
     if (mesh) {
-        console.log("Desenhando malha..."); // Verifique se esta mensagem aparece
         mesh.Draw();
     }
 
     animationFrameId = requestAnimationFrame(drawScene);
 }
 
+// Resize com DPR consideration
 function resize(canvas) {
     const dpr = window.devicePixelRatio || 1;
     const displayWidth = Math.round(canvas.clientWidth * dpr);
@@ -90,6 +92,7 @@ function resize(canvas) {
     }
 }
 
+// Limpeza de recursos
 window.addEventListener('beforeunload', function() {
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
