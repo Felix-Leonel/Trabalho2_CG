@@ -63,7 +63,7 @@
             return mat2(cos(a),-sin(a),sin(a),cos(a)) * p;
         }
         
-        float fractal1(vec2 p) {
+        float fractal1(vec2 p) { //Hexagono
             p = rotate(p, time*0.3);
             float d = hexagon(p, 0.3);
             for(int i=0; i<3; i++) {
@@ -74,7 +74,7 @@
             return d;
         }
         
-        float fractal2(vec2 p) {
+        float fractal2(vec2 p) { //Estrela 5 pontas
             p = rotate(p, -time*0.2);
             float d = star(p, 0.4, 5);
             p = abs(p) - 0.15;
@@ -82,7 +82,7 @@
             return d;
         }
         
-        float fractal3(vec2 p) {
+        float fractal3(vec2 p) { //Círculos
             p = rotate(p, time*0.4);
             float d = circle(p, 0.3);
             for(int i=0; i<4; i++) {
@@ -93,7 +93,7 @@
             return d;
         }
         
-        float fractal4(vec2 p) {
+        float fractal4(vec2 p) { //6 Círculos
             p = rotate(p, time*0.25);
             float d = 1e5;
             for(int i=0; i<6; i++) {
@@ -104,7 +104,7 @@
             return d;
         }
         
-        float fractal5(vec2 p) {
+        float fractal5(vec2 p) { //Heágono
             p = rotate(p, time*0.15);
             float d = hexagon(p, 0.25);
             p = abs(p) - 0.15;
@@ -113,7 +113,7 @@
             return d;
         }
         
-        float fractal6(vec2 p) {
+        float fractal6(vec2 p) { //Estrela 7 pontas
             p = rotate(p, time*0.35);
             float d = star(p, 0.35, 7);
             for(int i=0; i<3; i++) {
@@ -124,7 +124,7 @@
             return d;
         }
         
-        float fractal7(vec2 p) {
+        float fractal7(vec2 p) { //8 Estrelas
             p = rotate(p, time*0.2);
             float d = 1e5;
             
@@ -140,7 +140,7 @@
             return min(d, center);
         }
         
-        float fractal8(vec2 p) {
+        float fractal8(vec2 p) { //12 hexagonos
             p = rotate(p, time*0.18);
             float d = 1e5;
             
@@ -176,7 +176,7 @@
             d[3] = smoothstep(0.02, 0.0, fractal4(uv-pos[3]));
             d[4] = smoothstep(0.02, 0.0, fractal5(uv-pos[4]));
             d[5] = smoothstep(0.02, 0.0, fractal6(uv-pos[5]));
-            d[6] = smoothstep(0.02, 0.0, fractal7(uv-pos[6]));
+            d[6] = smoothstep(0.02, 0.0, fractal7(uv-pos[6])); 
             d[7] = smoothstep(0.02, 0.0, fractal8(uv-pos[7])); 
             
             vec3 col = vec3(0.0);
@@ -186,8 +186,8 @@
             col += d[3] * vec3(0.3,0.8,0.3); // Verde
             col += d[4] * vec3(0.8,0.4,0.8); // Roxo
             col += d[5] * vec3(0.1,0.5,0.9); // Azul claro
-            col += d[6] * vec3(1.0,0.6,0.0); // Laranja (nova cor)
-            col += d[7] * vec3(0.5,0.2,0.7); // Lilás (nova cor)
+            col += d[6] * vec3(1.0,0.6,0.0); // Laranja
+            col += d[7] * vec3(0.5,0.2,0.7); // Lilás
             
             float overlap = min(1.0, (d[0]+d[1]+d[2]+d[3]+d[4]+d[5]+d[6]+d[7])*0.5);
             col += overlap * 0.4 * vec3(1.0,1.0,1.0);

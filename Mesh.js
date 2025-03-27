@@ -14,7 +14,6 @@ class Mesh {
         gl.bindBuffer(gl.ARRAY_BUFFER, this.verticesVBO);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verticesArray), gl.STATIC_DRAW);
 
-        // Parâmetros simplificados
         gl.enableVertexAttribArray(positionAttribute);
         gl.vertexAttribPointer(positionAttribute, 2, gl.FLOAT, false, 0, 0);
 
@@ -28,7 +27,7 @@ class Mesh {
     }
 
     Draw() {
-        //Lógica básica de desenho
+        //Lógica do desenho
         gl.bindVertexArray(this.vao);
         gl.drawElements(gl.TRIANGLES, this.numberOfIndices, gl.UNSIGNED_INT, 0);
 

@@ -2,7 +2,6 @@ var mesh, timer, shaderProgram;
 var canvas, gl;
 var animationFrameId;
 
-//Estrutura básica com tratamento de erros
 var start = function() {
     console.log("Iniciando aplicação...");
     if (!initCanvas()) {
@@ -41,8 +40,8 @@ var initCanvas = function() {
             canvas.style.display = 'flex';
             canvas.style.alignItems = 'center';
             canvas.style.justifyContent = 'center';
-            canvas.innerHTML = '<p>Seu navegador não suporta WebGL. Por favor atualize ou use Chrome/Firefox.</p>';
-            throw new Error("WebGL não suportado. Tente usar Chrome ou Firefox.");
+            canvas.innerHTML = '<p>Seu navegador não suporta WebGL.</p>';
+            throw new Error("WebGL não suportado.");
         }
 
         gl.enable(gl.DEPTH_TEST);
@@ -79,7 +78,6 @@ function drawScene() {
     animationFrameId = requestAnimationFrame(drawScene);
 }
 
-// Resize com DPR consideration
 function resize(canvas) {
     const dpr = window.devicePixelRatio || 1;
     const displayWidth = Math.round(canvas.clientWidth * dpr);
@@ -92,7 +90,6 @@ function resize(canvas) {
     }
 }
 
-// Limpeza de recursos
 window.addEventListener('beforeunload', function() {
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
